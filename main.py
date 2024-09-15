@@ -884,9 +884,10 @@ Primary Key:ID
         
         
 
-@app.get("/getresponse/{User_Input}")
+@app.get("/")
 async def get_response(User_Input: str):
     # Define the prompt with dynamic user input
+    return "Hello!"
     table_names1 = [
     'Accounts',
     'Business Unit',
