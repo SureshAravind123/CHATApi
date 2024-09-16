@@ -12,5 +12,5 @@ app = FastAPI()
 @app.get("/get")
 async def get_response():
     # Define the prompt with dynamic user input
-    return "Hello!"
+    return "Hello! suresh"
     
