@@ -208,14 +208,7 @@ Columns:
 - Label: Varchar(50), Required.  
 - OrderWise: Integer, Required.  
 - Is_Active: Bit, Required.
- 
 
- Table Name: Emp_Cert_Status  
-Columns:  
-- ID: Integer, Primary Key, Auto-increment.  
-- Label: Varchar(50), Required.  
-- OrderWise: Integer, Required.  
-- Is_Active: Bit, Required.
  
  
 Table Name: Emp_Type  
@@ -295,27 +288,6 @@ Additionally, the table includes the following constraints:
 Primary Key on ID.
 Foreign Keys on Emp_Alloc_Status (Allocation_Status(ID)), Emp_Type (Emp_Type(ID)), Employee_Id (Employee(Id)), Job_Requirement_Id (Job_Requirements(ID)), and Project_Id (Project(ID)).
 
- 
-Table Name: Employee_Certification
-Columns:
-ID: Integer, Primary Key, Auto-increment.
-Certificate_Id: Integer, Foreign Key to Certification(ID), Required.
-Created_By: Varchar(50), Nullable. The user who created the certification record.
-Created_On: DateTime, Nullable. The date and time when the record was created.
-Updated_By: Varchar(50), Nullable. The user who last updated the record.
-Updated_On: DateTime, Nullable. The date and time when the record was last updated.
-Certification_End_Date: Date, Nullable. The end date of the certification.
-Date_Of_Certification: Date, Required. The date the certification was awarded.
-LevelId: Integer, Foreign Key to Level(ID), Nullable. Represents the level of the certification.
-Location_Id: Integer, Foreign Key to Location(ID), Nullable. Represents the location where the certification was awarded.
-Emp_Certification_StatusId: Integer, Foreign Key to Emp_Cert_Status(ID), Required. Represents the status of the employee certification.
-Emp_Id: Integer, Foreign Key to Employee(Id), Required. References the employee who holds the certification.
-Foreign Keys:
-Certificate_Id references Certification(ID).
-Emp_Certification_StatusId references Emp_Cert_Status(ID).
-Emp_Id references Employee(Id).
-LevelId references Level(ID).
-Location_Id references Location(ID).
  
  
 Table Name: Job_Requirement_Allocation
@@ -698,14 +670,6 @@ Table Name: Skill_Type
     - Foreign Key on Skill_Type_ID to Skill_Type.
  
  
-  Table Name: Cert_Status  
-Columns:  
-- ID: Integer, Primary Key, Auto-increment.  
-- Label: Varchar(50), Required.  
-- OrderWise: Integer, Required.  
-- Is_Active: Bit, Required.
- 
- 
 Table Name: Certification  
 Columns:  
 - ID: Integer, Primary Key, Auto-increment.  
@@ -732,77 +696,6 @@ Columns:
 - Label: Varchar(50), Required.  
 - OrderWise: Integer, Required.  
 - Is_Active: Bit, Required.
- 
-Table Name: Emp_Work_Type  
-Columns:  
-- ID: Integer, Primary Key, Auto-increment.  
-- Label: Varchar(50), Required.  
-- OrderWise: Integer, Required.  
-- Is_Active: Bit, Required.
- 
-Table Name: Employee
-Columns:
-Id: Integer, Primary Key, Auto-increment.
-Employee_Code: Varchar(20), Required, Unique.
-First_Name: Varchar(50), Required.
-Middle_Name: Varchar(50), Nullable.
-Last_Name: Varchar(50), Required.
-Email: Varchar(50), Required, Unique.
-Mobile_Number: Integer, Required, Unique.
-Date_Of_Joining: Date, Required.
-Total_Experience: Decimal(18, 2), Required.
-ILink_Experience: Decimal(18, 2), Required.
-Age: Integer, Nullable.
-Designation_Id: Integer, Foreign Key to Desigination(ID), Required.
-Role_Id: Integer, Foreign Key to Role(ID), Nullable.
-BU_Id: Integer, Foreign Key to Business_Unit(ID), Nullable.
-Location_Id: Integer, Foreign Key to Location(ID), Required.
-Reporting_To_Id: Integer, Foreign Key to Employee(Id), Nullable.
-Is_Active: Bit, Required.
-Notice_Period: Bit, Nullable.
-Last_Working_Date: Date, Nullable.
-Current_Allocation_Status: Integer, Foreign Key to Allocation_Status(ID), Nullable.
-Allocation_Percentage: Integer, Nullable.
-Location_Type: Integer, Foreign Key to Location_Type(ID), Nullable.
-Emp_Type: Integer, Foreign Key to Emp_Type(ID), Nullable.
-Is_Bill: Bit, Nullable.
-Unique Constraints:
-Employee_Code
-Email
-Mobile_Number
-Foreign Keys:
-BU_Id to Business_Unit(ID)
-Current_Allocation_Status to Allocation_Status(ID)
-Designation_Id to Desigination(ID)
-Emp_Type to Emp_Type(ID)
-Location_Id to Location(ID)
-Location_Type to Location_Type(ID)
-Reporting_To_Id to Employee(Id)
-Role_Id to Role(ID)
-
-Table Name: Employee_Certification
-Columns:
-ID: Integer, Primary Key, Auto-increment.
-Certificate_Id: Integer, Foreign Key to Certification(ID), Required.
-Created_By: Varchar(50), Nullable. The user who created the certification record.
-Created_On: DateTime, Nullable. The date and time when the record was created.
-Updated_By: Varchar(50), Nullable. The user who last updated the record.
-Updated_On: DateTime, Nullable. The date and time when the record was last updated.
-Certification_End_Date: Date, Nullable. The end date of the certification.
-Date_Of_Certification: Date, Required. The date the certification was awarded.
-LevelId: Integer, Foreign Key to Level(ID), Nullable. Represents the level of the certification.
-Location_Id: Integer, Foreign Key to Location(ID), Nullable. Represents the location where the certification was awarded.
-Emp_Certification_StatusId: Integer, Foreign Key to Emp_Cert_Status(ID), Required. Represents the status of the employee certification.
-Emp_Id: Integer, Foreign Key to Employee(Id), Required. References the employee who holds the certification.
-Foreign Keys:
-Certificate_Id references Certification(ID).
-Emp_Certification_StatusId references Emp_Cert_Status(ID).
-Emp_Id references Employee(Id).
-LevelId references Level(ID).
-Location_Id references Location(ID).
- 
- 
-
  
 
  
@@ -959,78 +852,13 @@ async def get_response(User_Input: str):
     'Training_Details',
     'Training_Status'
 ]
-    ##pre=""
-    ##result=search_word_and_compare_tables(User_Input, table_names1, table_names2, table_names3,table_names4)
+    pre=""
+    result=search_word_and_compare_tables(User_Input, table_names1, table_names2, table_names3,table_names4)
 
     prompt_content=f"""
    
-    Table Name: Skill_Type
-    Columns:
-    - ID: Integer, Primary Key, Auto-increment.
-    - Label: Varchar(150), Required, Unique.
-    - OrderWise: Integer, Required.
-    - Is_Active: Bit, Required.
-    - Unique Constraint on Label.
- 
-    Table Name: Skills
-    Columns:
-    - ID: Integer, Primary Key, Auto-increment.
-    - Name: Varchar(250), Required.
-    - Is_Active: Bit, Required.
-    - Skill_Type_ID: Integer, Foreign Key to Skill_Type(ID), Nullable.
-    - Created_By: Varchar(50), Nullable.
-    - Created_On: Datetime, Nullable.
-    - Updated_By: Varchar(50), Nullable.
-    - Updated_On: Datetime, Nullable.
-    - Foreign Key on Skill_Type_ID to Skill_Type.
 
-    
- 
- 
- 
-Table Name: Job_Status
-Columns:
-ID: Integer, Primary Key, Auto-increment.
-Label: Varchar(50), Required. Descriptive label for the job status.
-OrderWise: Integer, Required. The order or priority associated with the status.
-Is_Active: Bit, Required. Indicates whether the status is active.
-Constraints:
-Primary Key: ID
-Unique Key: Label (Unique non-clustered index on Label)
- 
- 
-Table Name: Level
-Columns:
-ID: Integer, Primary Key, Auto-increment.
-Label: Varchar(50), Required. Descriptive label for the level.
-OrderWise: Integer, Required. The order or ranking associated with the level.
-Is_Active: Bit, Required. Indicates if the level is active or not.
-Constraints:
-Primary Key: ID
-
-
- 
-
-Table Name: Project_Status
-Column Details:
-ID: int, Primary Key, Auto-increment.
-Label: varchar(50), Unique, Not Null.
-OrderWise: int, Not Null.
-Is_Active: bit, Not Null.
-Indexes:
-Primary Key: ID (Clustered)
-Unique Nonclustered Index: Label
- 
-Table Name: Project_Type
-Column Details:
-ID: int, Primary Key, Auto-increment.
-Label: varchar(50), Not Null.
-OrderWise: int, Not Null.
-Is_Active: bit, Not Null.
-Indexes:
-Primary Key: ID (Clustered)
-
-
+     {result}
     
    
    Please provide the SQL SERVER query for the following request:
