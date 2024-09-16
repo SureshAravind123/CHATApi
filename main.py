@@ -9,7 +9,7 @@ import re
 app = FastAPI()
 
 
-@app.get("/")
+@app.get("/get")
 async def get_response():
     # Define the prompt with dynamic user input
     return "Hello!"
