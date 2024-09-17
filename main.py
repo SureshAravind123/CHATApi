@@ -852,13 +852,124 @@ async def get_response(User_Input: str):
     'Training_Details',
     'Training_Status'
 ]
-    pre=""
-    result=search_word_and_compare_tables(User_Input, table_names1, table_names2, table_names3,table_names4)
+    ##pre=""
+    ##result=search_word_and_compare_tables(User_Input, table_names1, table_names2, table_names3,table_names4)
 
     prompt_content=f"""
    
+   Table Name: Project
+Column Details:
+ID: int, Primary Key, Auto-increment.
+Name: varchar(250), Required, Unique.
+Project_Code: varchar(100), Nullable.
+Start_Date: date, Required.
+End_Date: date, Required.
+Description: text, Required.
+Team_Size: int, Nullable.
+Account_Id: int, Foreign Key to Accounts(Id), Required.
+Project_Status_Id: int, Foreign Key to Project_Status(ID), Nullable.
+Project_Manager_Id: int, Foreign Key to Employee(Id), Nullable.
+Location_Id: int, Foreign Key to Location(ID), Nullable.
+Created_By: varchar(50), Nullable.
+Created_On: datetime, Nullable.
+Updated_By: varchar(50), Nullable.
+Updated_On: datetime, Nullable.
+Service_Id: int, Foreign Key to Service(ID), Nullable.
+Modified_By: int, Foreign Key to Employee(Id), Nullable.
+Modified_On: datetime, Nullable.
+Is_Active: bit, Nullable.
+Is_Multiple_Invoice: bit, Nullable.
 
-     {result}
+Table Name: Employee
+Columns:
+Id: Integer, Primary Key, Auto-increment.
+Employee_Code: Varchar(20), Required, Unique.
+First_Name: Varchar(50), Required.
+Middle_Name: Varchar(50), Nullable.
+Last_Name: Varchar(50), Required.
+Email: Varchar(50), Required, Unique.
+Mobile_Number: Integer, Required, Unique.
+Date_Of_Joining: Date, Required.
+Total_Experience: Decimal(18, 2), Required.
+ILink_Experience: Decimal(18, 2), Required.
+Age: Integer, Nullable.
+Designation_Id: Integer, Foreign Key to Desigination(ID), Required.
+Role_Id: Integer, Foreign Key to Role(ID), Nullable.
+BU_Id: Integer, Foreign Key to Business_Unit(ID), Nullable.
+Location_Id: Integer, Foreign Key to Location(ID), Required.
+Reporting_To_Id: Integer, Foreign Key to Employee(Id), Nullable.
+Is_Active: Bit, Required.
+Notice_Period: Bit, Nullable.
+Last_Working_Date: Date, Nullable.
+Current_Allocation_Status: Integer, Foreign Key to Allocation_Status(ID), Nullable.
+Allocation_Percentage: Integer, Nullable.
+Location_Type: Integer, Foreign Key to Location_Type(ID), Nullable.
+Emp_Type: Integer, Foreign Key to Emp_Type(ID), Nullable.
+Is_Bill: Bit, Nullable.
+Unique Constraints:
+Employee_Code
+Email
+Mobile_Number
+Foreign Keys:
+BU_Id to Business_Unit(ID)
+Current_Allocation_Status to Allocation_Status(ID)
+Designation_Id to Desigination(ID)
+Emp_Type to Emp_Type(ID)
+Location_Id to Location(ID)
+Location_Type to Location_Type(ID)
+Reporting_To_Id to Employee(Id)
+Role_Id to Role(ID)
+
+
+Table Name: Sow
+Columns:
+ID (int, Identity, Not Null)
+Name (varchar(50), Not Null)
+Opp_Id (int, Not Null)
+Acc_Id (int, Nullable)
+Project_Id (int, Nullable)
+Project_Type (int, Nullable)
+Value (bigint, Nullable)
+Sow_Signed (bit, Not Null)
+Signed_Date (datetime, Nullable)
+Region_Id (int, Not Null)
+Sow_Start_Date (date, Not Null)
+Sow_End_Date (date, Not Null)
+Project_Name (varchar(50), Nullable)
+Acc_Name (varchar(50), Nullable)
+Is_Active (bit, Nullable)
+Created_By (varchar(50), Nullable)
+Created_On (datetime, Nullable)
+Updated_By (varchar(50), Nullable)
+Updated_On (datetime, Nullable)
+Primary Key: ID
+Foreign Keys:
+Acc_Id references Accounts (Id)
+Opp_Id references Opportunity (ID)
+Project_Id references Project (ID)
+Project_Type references Project_Type (ID)
+Region_Id references Region (ID)
+ 
+Table Name: Skill_Type
+    Columns:
+    - ID: Integer, Primary Key, Auto-increment.
+    - Label: Varchar(150), Required, Unique.
+    - OrderWise: Integer, Required.
+    - Is_Active: Bit, Required.
+    - Unique Constraint on Label.
+ 
+    Table Name: Skills
+    Columns:
+    - ID: Integer, Primary Key, Auto-increment.
+    - Name: Varchar(250), Required.
+    - Is_Active: Bit, Required.
+    - Skill_Type_ID: Integer, Foreign Key to Skill_Type(ID), Nullable.
+    - Created_By: Varchar(50), Nullable.
+    - Created_On: Datetime, Nullable.
+    - Updated_By: Varchar(50), Nullable.
+    - Updated_On: Datetime, Nullable.
+    - Foreign Key on Skill_Type_ID to Skill_Type.
+     
     
    
    Please provide the SQL SERVER query for the following request:
