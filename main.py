@@ -1057,10 +1057,10 @@ Table Name: Skill_Type
     # Generate final response based on user input and SQL query results
     prompt_content1 = f"""
     You are given a question and an answer. Your task is to generate a human-readable response based on the provided information.
- 
+    Answer should not be ai generated , use the answer which i have given below
     Question: {User_Input}
     Answer: {answer}
- 
+    
     Response:
     """
  
