@@ -904,8 +904,7 @@ async def generate_response(Query_Result: str, user_question: str):
      
     Response:
 
-    Rephrase the given string "Response" in neat
-     format  to view in chatbot screen 
+    rephrase  the response in good allignment
     """
 
 
