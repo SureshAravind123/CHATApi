@@ -931,23 +931,6 @@ async def generate_response(Query_Result: str, user_question: str):
 
 response = response.strip()  # Remove leading/trailing whitespace
 
-# Determine response format
-if "Is_Active" in response:  # Example check for multi-column data
-    formatted_response = (
-        "**Here is the response:**\n"
-        "**List of Accounts**\n"
-        "| **Id** | **Name**       | **Is Active** |\n"
-        "|--------|----------------|---------------|\n"
-        "| **3**  | **N/A**        | **False**     |\n"
-        "| **2**  | **Outsystems** | **True**      |\n"
-        "| **1**  | **PowerApps**  | **True**      |"
-    )
-else:
-    # Assuming response is a simple list
-    items = response.split(", ")  # Example list parsing
-    formatted_response = (
-        "**Here is the response:**\n" +
-        "\n".join([f"- **{item}**" for item in items])
-    )
 
-return {"response": formatted_response}
+
+return response
