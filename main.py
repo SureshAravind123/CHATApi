@@ -747,13 +747,13 @@ async def get_response(User_Input: str):
     'Business Units',
     'Desigination',
     'Location',
-    'Locations'
+    'Locations',
     'Region',
-    'Regions'
+    'Regions',
     'Role',
-    'Roles'
+    'Roles',
     'Technology',
-    'Technologies'
+    'Technologies',
     'BU',
     'employee type',
     'Employee Type',
@@ -765,11 +765,11 @@ async def get_response(User_Input: str):
 
     table_names2 = [
     'Job requirement',
-    'job requirements'
+    'job requirements',
     'job requirement allocation',
-    'job requirement allocations'
+    'job requirement allocations',
     'Allocation',
-    'Allocations'
+    'Allocations',
     'employee allocation',
     'employee allocations',
     'pending allocation',
@@ -781,7 +781,7 @@ async def get_response(User_Input: str):
     'Billable employee',
     'Billable employees',
     'Skill level',
-    'employee work type'
+    'employee work type',
     'skill type'
 ]
     
@@ -800,7 +800,7 @@ async def get_response(User_Input: str):
     'sow project',
     'projecttype',
     'Accounts',
-    'Account'
+    'Account',
     'Sow''s',
     'sow projects',
 ]
