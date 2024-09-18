@@ -902,7 +902,8 @@ async def generate_response(Query_Result: str, user_question: str):
     Question: {user_question}
     Answer: {Query_Result}
 
-    Avoid Extra spaces and extra new lines for the output
+    Avoid Extra spaces and extra new lines in Response
+
     Response:
     """
 
