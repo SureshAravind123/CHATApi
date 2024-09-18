@@ -901,8 +901,11 @@ async def generate_response(Query_Result: str, user_question: str):
 
     Question: {user_question}
     Answer: {Query_Result}
-
+     
     Response:
+
+    Rephrase the given string "Response" in neat
+     format  to view in chatbot screen 
     """
 
 
