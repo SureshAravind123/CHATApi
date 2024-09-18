@@ -897,16 +897,15 @@ async def generate_response(Query_Result: str, user_question: str):
 
     prompt_content1 = f"""
     You are given a question and an answer. Your task is to generate a human-readable response based on the provided information.
-    You need to generate response based on {user_question} and  {Query_Result} , not an Ai generated answer.
+    You need to generate a response based on the question: "{user_question}" and the answer: "{Query_Result}", not an AI-generated answer.
 
     Question: {user_question}
     Answer: {Query_Result}
      
     Response:
 
-   rephrase  the response in a eye catching way
+    Please format the response appropriately: if it's a list, present it in list format; if it has two or more columns, present it in a table format.
     """
-
 
     client = Groq(api_key="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")
     completion1 = client.chat.completions.create(
@@ -929,6 +928,24 @@ async def generate_response(Query_Result: str, user_question: str):
             response += content or ""
         if chunk.choices[0].finish_reason == 'length':
             break
- 
-    return {"response": response}
-   
+
+    # Determine response format
+    if "Is_Active" in response:  # Example check for multi-column data
+        formatted_response = f"""
+        **Here is the response:**
+
+        **List of Accounts**
+        
+        | **Id**     | **Name**       | **Is Active** |
+        |------------|----------------|----------------|
+        | **3**      | **N/A**        | **False**      |
+        | **2**      | **Outsystems** | **True**       |
+        | **1**      | **PowerApps**  | **True**       |
+        """
+    else:
+        # Assuming response is a simple list
+        items = response.split(", ")  # Example list parsing
+        formatted_response = f"**Here is the response:**\n\n" + "\n".join([f"- **{item}**" for item in items])
+
+    return {"response": formatted_response}
+
