@@ -928,8 +928,11 @@ async def generate_response(Query_Result: str, user_question: str):
             response += content or ""
         if chunk.choices[0].finish_reason == 'length':
             break
+
+
+    return response   
   # Remove leading/trailing whitespace
 
-    return {response}
+    
 
 
