@@ -899,7 +899,8 @@ async def generate_response(Query_Result: str, user_question: str):
     prompt_content1 = f"""
     You are given a question and an answer. Your task is to generate a human-readable response based on the provided information.
     You need to generate response based on {user_question} and  {Query_Result} , not an  Ai generated  {Query_Result}.
-    DONOT ADD LIKE" HERE IS THE ANSWER"
+
+    
     Question: {user_question}
     Answer: {Query_Result}
      
