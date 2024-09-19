@@ -904,7 +904,7 @@ async def generate_response(Query_Result: str, user_question: str):
      
     Response:
 
-   rephrase  the response in a eye catching way
+   
     """
 
 
