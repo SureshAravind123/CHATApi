@@ -8,4 +8,4 @@ app = FastAPI()
 @app.get("/")
 async def generate_response():
     # Return the response as a JSON-compatible format (e.g., dictionary)
-    return {"response": "response"}
+    return "hi"
