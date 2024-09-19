@@ -628,7 +628,7 @@ Additionally, the table includes the following constraints:
 Primary Key on ID.
 Foreign Keys on Emp_Alloc_Status (Allocation_Status(ID)), Emp_Type (Emp_Type(ID)), Employee_Id (Employee(Id)), Job_Requirement_Id (Job_Requirements(ID)), and Project_Id (Project(ID)).
 
-Table Name: Servie
+Table Name: Service
 Column Details:
 ID: int, Primary Key, Auto-increment.
 Name: varchar(250), Not Null.
