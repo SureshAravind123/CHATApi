@@ -928,9 +928,8 @@ async def generate_response(Query_Result: str, user_question: str):
             response += content or ""
         if chunk.choices[0].finish_reason == 'length':
             break
+  # Remove leading/trailing whitespace
 
-response = response.strip()  # Remove leading/trailing whitespace
+    return {response}
 
 
-
-return response
