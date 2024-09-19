@@ -811,7 +811,8 @@ async def get_response(User_Input: str):
     'project status',
     'service line',
     'project'
-    'Services'
+    'Services',
+    'Service'
 ]
    
     pre=""
