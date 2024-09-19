@@ -929,9 +929,9 @@ async def generate_response(Query_Result: str, user_question: str):
         if chunk.choices[0].finish_reason == 'length':
             break
 
+    # Ensure response is returned within the function scope
+    return response  # Return the final response after processing the completion
 
-    return response   
-  # Remove leading/trailing whitespace
 
     
 
