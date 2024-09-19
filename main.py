@@ -906,7 +906,7 @@ async def generate_response(Query_Result: str, user_question: str):
 
      Rephrase into eyecatching response if the response is null or no data to be shown
      DONOT ADD ANY LIKE "HERE IS THE EYECATCHINHG RESPONSE " OR "HERE IS THE ANSWER"
-     IF the response contains 3 or more records show in list form ,
+     IF the response contains 3 or more records show in list view ,
      if they specify them in desired format show them in desired format
     
    
