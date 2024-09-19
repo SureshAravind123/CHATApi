@@ -903,10 +903,8 @@ async def generate_response(Query_Result: str, user_question: str):
     Answer: {Query_Result}
      
     Response:
-
-     Rephrase into eyecatching response if the response is null or no data to be shown
      
-     DONOT ADD ANY LIKE "HERE IS THE EYECATCHINHG RESPONSE " OR "HERE IS THE ANSWER"
+     DONOT ADD ANY LIKE  "HERE IS THE ANSWER"
     
    
     """
