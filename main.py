@@ -902,7 +902,7 @@ async def generate_response(Query_Result: str, user_question: str):
        
     Question: {user_question}
     Answer: {Query_Result}
-     "Do not include here is the response"
+    
     Response:    
    
     """
