@@ -35,7 +35,7 @@ Columns:
 -Primary Key on ID.
 -Unique Constraint on Name (Note: There is a redundant unique constraint on Name).
 
-Table Name: Desigination  
+Table Name: Designation  
 Columns:  
 - ID: Integer, Primary Key, Auto-increment.  
 - Name: Varchar(50), Required, Unique.  
