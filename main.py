@@ -673,7 +673,7 @@ Allocation_Status_Id references Allocation_Status(ID).
 
 
 
-    Table Name: Project
+Table Name: Project
 Column Details:
 ID: int, Primary Key, Auto-increment.
 Name: varchar(250), Required, Unique.
