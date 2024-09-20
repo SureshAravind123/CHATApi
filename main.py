@@ -905,7 +905,7 @@ async def generate_response(Query_Result: str, user_question: str):
     
     Response:    
 
-    FOR EXAMPLE : THE {Query_Result} IS EMPTY PLEASE PROVIDE THERE IS NO {user_question} BASED ON THE QUESTION
+   
     """
 
 
