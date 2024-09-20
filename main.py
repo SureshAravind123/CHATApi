@@ -544,7 +544,7 @@ Table Name: Accounts
     -Unique Constraint on Name (Note: There is a redundant unique constraint on Name).
 
 
-    Table Name: Project
+Table Name: Project
 Column Details:
 ID: int, Primary Key, Auto-increment.
 Name: varchar(250), Required, Unique.
@@ -673,7 +673,7 @@ Allocation_Status_Id references Allocation_Status(ID).
 
 
 
-Table Name: Project
+Table Name: project
 Column Details:
 ID: int, Primary Key, Auto-increment.
 Name: varchar(250), Required, Unique.
