@@ -939,7 +939,7 @@ async def get_project_insights():
     prompt1 = f"""
     Table: Projects
     Please analyze the table data and provide insights.
-     give insight with visual representation if needed
+     give insight with visual representation like chart or other suitable visual if needed
     data:
     ID	Name	Project_Code	Start_Date	End_Date	Description	Team_Size	Account_Id	Project_Status_Id	Project_Manager_Id	Location_Id	Created_By	Created_On	Updated_By	Updated_On	Service_Id	Modified_By	Modified_On	Is_Active	Is_Multiple_Invoice
 4	Web App Modernization - AbbVie	PO1029	2023-11-21	2024-01-31	sgeferregreg	1	5	1	NULL	1	NULL	2024-02-16 04:57:47.000	NULL	NULL	NULL	NULL	NULL	NULL	NULL
