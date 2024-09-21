@@ -932,4 +932,58 @@ async def generate_response(Query_Result: str, user_question: str):
             break
  
     return {"response": response}
+
+@app.get("/insight")
+async def get_project_insights():
+    # Prepare your prompt content
+    prompt1 = f"""
+    Table: Projects
+    Please analyze the table data and provide insights.
+     give insight with visual representation if needed
+    data:
+    ID	Name	Project_Code	Start_Date	End_Date	Description	Team_Size	Account_Id	Project_Status_Id	Project_Manager_Id	Location_Id	Created_By	Created_On	Updated_By	Updated_On	Service_Id	Modified_By	Modified_On	Is_Active	Is_Multiple_Invoice
+4	Web App Modernization - AbbVie	PO1029	2023-11-21	2024-01-31	sgeferregreg	1	5	1	NULL	1	NULL	2024-02-16 04:57:47.000	NULL	NULL	NULL	NULL	NULL	NULL	NULL
+5	Thingworx Version Upgrade - Abbvie	PO1030	2023-10-04	2024-03-31	sgeferregreg	2	5	1	NULL	1	NULL	2024-02-17 04:57:47.000	NULL	NULL	NULL	NULL	NULL	NULL	NULL
+6	Simulator App	PO1049	2023-11-07	2024-01-31	sgeferregreg	3	5	1	NULL	1	NULL	2024-02-18 04:57:47.000	NULL	NULL	NULL	NULL	NULL	NULL	NULL
+7	Coolsculpting - Connected devices - AbbVie	PO920	2023-06-19	2024-04-30	sgeferregreg	4	5	1	NULL	1	NULL	2024-02-19 04:57:47.000	NULL	NULL	NULL	NULL	NULL	NULL	NULL
+8	AEC Project	PO921	2023-07-01	2024-05-15	sgeferregreg	5	5	1	NULL	1	NULL	2024-02-20 04:57:47.000	NULL	NULL	NULL	NULL	NULL	NULL	NULL
+12	AR/VR Development - EduTech	PO1060	2023-10-05	2024-03-25	Developing an AR/VR solution for online learning	6	3	1	NULL	2	NULL	2024-03-02 04:57:47.000	NULL	NULL	NULL	NULL	NULL	NULL	NULL
+13	Inventory Management System - Retail Chain	PO1061	2023-09-14	2024-02-28	Building an inventory management software for retail stores	7	4	3	NULL	3	NULL	2024-03-03 04:57:47.000	NULL	NULL	NULL	NULL	NULL	NULL	NULL
+14	AI Chatbot - SupportX	PO1062	2023-11-10	2024-05-10	Creating an AI-based chatbot for customer support	8	1	2	NULL	1	NULL	2024-03-04 04:57:47.000	NULL	NULL	NULL	NULL	NULL	NULL	NULL
+15	Smart City Dashboard - CityGov	PO1063	2023-07-25	2024-04-30	Developing a smart city data dashboard for urban planning	9	2	1	NULL	2	NULL	2024-03-05 04:57:47.000	NULL	NULL	NULL	NULL	NULL	NULL	NULL
+16	Social Media Analytics - Media Insights	PO1064	2023-08-20	2024-01-31	Building an analytics platform for social media trends	10	5	2	NULL	3	NULL	2024-03-06 04:57:47.000	NULL	NULL	NULL	NULL	NULL	NULL	NULL
+17	Mobile Payment Gateway - QuickPay	PO1065	2023-09-18	2024-06-01	Implementing a secure mobile payment gateway	11	4	2	NULL	1	NULL	2024-03-07 04:57:47.000	NULL	NULL	NULL	NULL	NULL	NULL	NULL
+18	E-learning Platform Upgrade - LearnWell	PO1066	2023-10-01	2024-03-15	Upgrading an e-learning platform for better accessibility	12	3	3	NULL	2	NULL	2024-03-08 04:57:47.000	NULL	NULL	NULL	NULL	NULL	NULL	NULL
+19	Digital Marketing Tools - AdTech	PO1067	2023-09-05	2024-04-15	Building AI-powered digital marketing tools for ad campaigns	13	2	1	NULL	3	NULL	2024-03-09 04:57:47.000	NULL	NULL	NULL	NULL	NULL	NULL	NULL
+20	Predictive Analytics - Health Solutions	PO1068	2023-11-20	2024-05-25	Developing predictive analytics tools for healthcare data	14	4	2	NULL	1	NULL	2024-03-10 04:57:47.000	NULL	NULL	NULL	NULL	NULL	NULL	NULL
+21	Cloud-Based CRM - SalesBoost	PO1069	2023-08-01	2024-03-01	Building a cloud-based CRM system for sales tracking	15	5	3	NULL	2	NULL	2024-03-11 04:57:47.000	NULL	NULL	NULL	NULL	NULL	NULL	NULL
+    """
+
+    
+        # Initialize Groq client
+    client = Groq(api_key="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")
+
+        # Create a completion request using Groq
+    completion1 = client.chat.completions.create(
+            model="llama3-8b-8192",
+            messages=[
+                {"role": "system", "content": "Give only the answer with respect to the question"},
+                {"role": "user", "content": prompt1}
+            ],
+            temperature=0,
+            max_tokens=1024,
+            top_p=1,
+            stream=True,
+            stop=None,
+        )
+
+        # Collect and return the output
+    response = ""
+    for chunk in completion1:
+            response += chunk.choices[0].delta.content or ""
+
+    return {"insights": response}
+
+   
+
    
